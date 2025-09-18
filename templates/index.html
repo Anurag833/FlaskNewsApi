@@ -81,16 +81,22 @@
       <div class="container my-3">
         <div class="row">
           {% for i in allNews %}
-          <div class="column col-md-3">
+          <div class="column col-md-3 my-3">
             <div class="card">
-              <img
-                src="{{i.urlToImage}}"
-                class="card-img-top"
-                alt="news image"
-              />
+              {% if i.urlToImage %}
+                <img src="{{i.urlToImage}}" class="card-img-top" alt="news image">
+              {% else %}
+                <img src="https://thumbs.dreamstime.com/z/image-not-available-icon-vector-set-white-background-eps-338269360.jpg?ct=jpeg" class="card-img-top" alt="news image">
+              {% endif %}
+
               <div class="card-body">
                 <h5 class="card-title">{{i.title | truncate(25)}}</h5>
-                <p class="card-text">{{i.description}}</p>
+                {% if i.description %}
+                  <p class="card-text">{{i.description | truncate(100)}}</p>
+                {% else %}
+                  <p class="card-text">Description Not Available...</p>
+                {% endif %}
+                
                 <a href="{{i.url}}" class="btn btn-primary">See More...</a>
               </div>
             </div>
