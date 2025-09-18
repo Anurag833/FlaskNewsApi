@@ -1,0 +1,8 @@
+.env
+*.env
+*.env*
+
+activate.bat
+*.bat
+.bat
+*.bat*
